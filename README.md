@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-	// Create a new priority queue
+    // Create a new priority queue
     pq := prioritize.NewPriorityQueue[string](nil)
 
     // Add some items
