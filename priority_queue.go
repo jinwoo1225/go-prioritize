@@ -76,9 +76,13 @@ func (h *PriorityQueue[T]) Range() []Item[T] {
 	h.mu.RLock()
 	defer h.mu.RUnlock()
 
-	var items []Item[T]
+	items := make([]Item[T], 0, h.internalHeap.Len())
 	for _, item := range h.internalHeap.items {
-		items = append(items, item)
+		items = append(items, Item[T]{
+			Value:    item.Value,
+			Priority: item.Priority,
+			index:    item.index,
+		})
 	}
 
 	return items
